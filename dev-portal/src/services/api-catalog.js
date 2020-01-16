@@ -69,15 +69,17 @@ let catalogPromiseCache // WARNING: Don't touch this. Should only be used by upd
  * 
  * returns an array of apis
  */
+//Looks like a bug in here
 function getApiGatewayApisFromUsagePlans(usagePlans) {
   return usagePlans.reduce((acc, usagePlan) => {
-
+    console.log(`processing usageplan ${usagePlan.name}`);
     usagePlan.apis.forEach(api => {
+      console.log(`processing api ${api.name}`)
       api.usagePlan = _.cloneDeep(usagePlan)
       // remove the apis from the cloned usagePlan so we don't go circular
       delete api.usagePlan.apis
     })
-
+    console.log(`Adding ${JSON.stringify(usagePlan.apis)}`)
     return acc.concat(usagePlan.apis)
   }, [])
 }

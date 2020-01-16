@@ -41,14 +41,19 @@ const InfoReplacement = observer(({ specSelectors }) => {
                 <p style={{ fontWeight: "bold" }}>Version</p>
               )}
               <p style={{ fontWeight: "bold" }}>Endpoint</p>
-              {/* <p style={{ fontWeight: "bold" }}>Usage Plan</p> */}
+              {store.api.usagePlan && (
+                  <p style={{ fontWeight: "bold" }}>Usage Plan</p>
+              )}
             </div>
             <div>
               {store.api.generic && (
                 <p>{store.api.swagger.info.version}</p>
               )}
               <p>https://{host}{basePath}</p>
-              {/* <p>{store.api.usagePlan.name}</p> */}
+              {store.api.usagePlan && (
+                  <p>{store.api.usagePlan.name}</p>
+              )}
+              <p>test</p>
             </div>
           </div>
           <p>{externalDocs}</p>
